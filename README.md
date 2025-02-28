@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+# React-toaster
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A lightweight and customizable React notification (toast) system for displaying success, error, warning, and info messages.
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+✅ Easy to use API\
+✅ Supports success, error, warning, and info messages\
+✅ Auto-dismiss feature\
+✅ Custom positioning and styling\
+✅ Manual dismissal with close button\
+✅ No external dependencies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📦 Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+npm install react-toaster
+```
 
-### `npm run build`
+or with Yarn:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+yarn add react-toaster
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🔥 Quick Start
 
-### `npm run eject`
+Wrap your app with the `ToasterProvider` to enable global notifications.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### **1. Setup in **``** or **``
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```tsx
+import React from "react";
+import ReactDOM from "react-dom";
+import { ToasterProvider } from "react-toaster";
+import App from "./App";
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+ReactDOM.render(
+  <ToasterProvider>
+    <App />
+  </ToasterProvider>,
+  document.getElementById("root")
+);
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### **2. Using Notifications in a Component**
 
-## Learn More
+```tsx
+import React from "react";
+import { useToaster } from "react-toaster";
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+const MyComponent = () => {
+  const { addToast } = useToaster();
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  return (
+    <div>
+      <button onClick={() => addToast("Success!", "success")}>Show Success</button>
+      <button onClick={() => addToast("Something went wrong!", "error")}>Show Error</button>
+    </div>
+  );
+};
 
-### Code Splitting
+export default MyComponent;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🎨 Customization
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+You can customize the toast appearance using CSS or override styles via props.
 
-### Making a Progressive Web App
+### **Custom Styles**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```css
+.toast {
+  padding: 12px 16px;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 250px;
+}
+.toast.success { background: green; }
+.toast.error { background: red; }
+.toast.warning { background: orange; }
+.toast.info { background: blue; }
+.toast button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+```
 
-### Advanced Configuration
+### **Props**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+| Prop       | Type     | Default     | Description                                     |
+| ---------- | -------- | ----------- | ----------------------------------------------- |
+| `message`  | `string` | -           | The notification message                        |
+| `type`     | `string` | `info`      | Can be `success`, `error`, `warning`, or `info` |
+| `duration` | `number` | `3000`      | Auto-dismiss duration in milliseconds           |
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 💡 Contributing
 
-### `npm run build` fails to minify
+Want to improve `react-toaster`? Feel free to submit issues or pull requests!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Fork the repo
+2. Create a new branch (`git checkout -b feature-branch`)
+3. Commit changes (`git commit -m "Add feature"`)
+4. Push to branch (`git push origin feature-branch`)
+5. Open a Pull Request
+
+---
+
+## 📜 License
+
+MIT License. Free to use and modify.
+
+---
+
+## 🌟 Show Your Support
+
+If you find this library helpful, please ⭐ the repo!
+
+[GitHub Repository](https://github.com/yourusername/react-toaster)

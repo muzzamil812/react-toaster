@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useToast } from "./toastContext";
 
-function App() {
+const App = () => {
+  const { addToast } = useToast();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={() => addToast("Task Completed!", "success")}>
+        Success
+      </button>
+      <br/>
+      <button onClick={() => addToast("Something went wrong!", "error")}>
+        Error
+      </button>
     </div>
   );
-}
+};
 
 export default App;
