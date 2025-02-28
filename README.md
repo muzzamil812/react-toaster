@@ -33,8 +33,6 @@ yarn add react-toaster
 
 Wrap your app with the `ToasterProvider` to enable global notifications.
 
-### **1. Setup in**
-
 ```tsx
 import React from "react";
 import ReactDOM from "react-dom";
@@ -49,7 +47,7 @@ ReactDOM.render(
 );
 ```
 
-### **2. Using Notifications in a Component**
+### **1. Using Notifications in a Component**
 
 ```tsx
 import React from "react";
