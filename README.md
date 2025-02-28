@@ -1,4 +1,4 @@
-# React-toaster
+# react-toaster
 
 A lightweight and customizable React notification (toast) system for displaying success, error, warning, and info messages.
 
